@@ -3,11 +3,11 @@
 
 ### Description
 
-Discover how to use Overlays to build up your map, or to add existing basemaps to your application.
+In this sample we show how you can use Map Suite to display nautical charts to your .NET application.
 
 Please refer to [Wiki](http://wiki.thinkgeo.com/wiki/map_suite_web_for_webapi) for the details.
 
-![Screenshot](https://github.com/ThinkGeo/DisplayNauticalChartsSample-ForWebApi/blob/master/ScreenShot.png)
+![Screenshot](https://github.com/ThinkGeo/DisplayNauticalChartsSample-ForWebApi/blob/master/Screenshot.png)
 
 ### Requirements
 This sample makes use of the following NuGet Packages
