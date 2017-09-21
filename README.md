@@ -3,7 +3,7 @@
 
 ### Description
 
-In this sample we show how you can use Map Suite to display nautical charts to your .NET application.
+In this sample we show how you can use Map Suite to display nautical charts to your WebApi application.
 
 Please refer to [Wiki](http://wiki.thinkgeo.com/wiki/map_suite_web_for_webapi) for the details.
 
