@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html style="height:100%">
+<head>
+    <title>Hello World</title>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+
+</head>
+<body style="height: 98%">
+    <div id="map" style="height: 100%; width: 100%"></div>
+</body>
+<!--<script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>-->
+<script src="https://openlayers.org/en/v4.3.3/build/ol.js"></script>
+<script>
+    var projection4326 = ol.proj.get('EPSG:4326');
+    var map = new ol.Map({
+        target: 'map',
+        controls: ol.control.defaults({ attribution: false, rotate: false }).extend(
+            [new ol.control.Attribution({ collapsible: false })]),
+        view: new ol.View({ center: [-87.51036995, 41.8291724], zoom: 11, projection: projection4326 })
+    });
+
+    getRootPath = function () {
+        var pathArray = location.pathname.split('/');
+        var appPath = "/";
+        for (var i = 1; i < pathArray.length - 1; i++) {
+            appPath += pathArray[i] + "/";
+        }
+
+        return appPath === "/" ? "" : appPath;
+    };
+
+    var urls = ['http://worldmapkit1.thinkgeo.com/CachedWMSServer/WmsServer.axd',
+        'http://worldmapkit2.thinkgeo.com/CachedWMSServer/WmsServer.axd',
+        'http://worldmapkit3.thinkgeo.com/CachedWMSServer/WmsServer.axd',
+        'http://worldmapkit4.thinkgeo.com/CachedWMSServer/WmsServer.axd',
+        'http://worldmapkit5.thinkgeo.com/CachedWMSServer/WmsServer.axd',
+        'http://worldmapkit6.thinkgeo.com/CachedWMSServer/WmsServer.axd'];
+    var params = {
+        'LAYERS': 'OSMWorldMapKitLayer',
+        'VERSION': '1.1.1',
+        'STYLE': 'WorldMapKitDefaultStyle'
+    };
+
+    var osmLayerDecimalDegreeSource = new ol.source.TileWMS(({ urls: urls, params: params, projection: projection4326 }));
+    var osmWorldMapKitLayer = new ol.layer.Tile({ source: osmLayerDecimalDegreeSource });
+
+    map.addLayer(osmWorldMapKitLayer);
+
+    var layerDecimalDegreeSource = new ol.source.XYZ({
+        projection: projection4326,
+        url: getRootPath() + '/DisplayNauticalChart/tile/{z}/{x}/{y}',
+        maxZoom: 19,
+        tileLoadFunction: function (imageTile, src) { imageTile.getImage().src = src + '?t=' + new Date().getTime(); }
+    });
+
+    var countriesLayer = new ol.layer.Tile({ source: layerDecimalDegreeSource });
+
+    map.addLayer(countriesLayer);
+</script>
+
+</html>
