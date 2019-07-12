@@ -64,13 +64,14 @@
                             imageTile.getImage().src = url;
                         }
                         else {
-                            var blob = response.blob();
-                            if (blob) {
-                                imageTile.getImage().src = URL.createObjectURL(blob);
-                            }
-                            else {
-                                imageTile.getImage().src = "";
-                            }
+                            response.blob().then((blob) => {
+                                if (blob) {
+                                    imageTile.getImage().src = URL.createObjectURL(blob);
+                                }
+                                else {
+                                    imageTile.getImage().src = "";
+                                }
+                            });
                         }
                     });
                 }
