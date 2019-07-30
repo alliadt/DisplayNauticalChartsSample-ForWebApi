@@ -68,6 +68,10 @@ This example makes use of the following APIs:
 - [ThinkGeo.MapSuite.Layers.NauticalChartsFeatureLayer](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.layers.printerlayer)
 - [ThinkGeo.MapSuite.WebApi.LayerOverlay](http://wiki.thinkgeo.com/wiki/api/thinkgeo.mapsuite.webapi.layeroverlay)
 
+### FAQ
+- __Q: How do I make background map work?__  
+A: Backgrounds for this sample are powered by ThinkGeo Cloud Maps and require an API Key. These were sent to you via email when you signed up with ThinkGeo, or you can register now at https://cloud.thinkgeo.com. Once you get them, please update the code in the ThinkGeo Cloud URL in "thinkgeo.js" or "index.htm". 
+
 ### About Map Suite
 Map Suite is a set of powerful development components and services for the .Net Framework.
 
